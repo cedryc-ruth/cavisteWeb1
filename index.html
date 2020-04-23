@@ -6,24 +6,7 @@
 <link rel="stylesheet" href="style.css" media="print">
 <script>
 function fetchList(){
-	const xhr = new XMLHttpRequest();
-
-	xhr.onload = function(data) {
-		if(this.status === 200) {
-			let data = JSON.parse(this.responseText);
-			console.log(data);
-		}
-	};
-
-	xhr.onerror = function() {
-		if(this.status === 404) {
-			console.log('nope.');
-		}
-	};
-
-	xhr.open('GET', 'http://cruth.phpnet.org/epfc/caviste/api/wines', true);
-	xhr.send(null);
-
+	//Some code...
 }
 
 let bt = document.getElementById('btList');
