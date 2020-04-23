@@ -4,48 +4,7 @@
 <meta charset="utf-8">
 <title>Caviste App JS</title>
 <link rel="stylesheet" href="style.css" media="print">
-<script>
-function fetchList(){
-	const xhr = new XMLHttpRequest();
 
-	xhr.onload = function(data) {
-		if(this.status === 200) {
-			let data = JSON.parse(this.responseText);
-			console.log(data);
-		}
-	};
-
-	xhr.onerror = function() {
-		if(this.status === 404) {
-			console.log('nope.');
-		}
-	};
-
-	xhr.open('GET', 'http://cruth.phpnet.org/epfc/caviste/api/wines', true);
-	xhr.send(null);
-
-}
-
-let bt = document.getElementById('btList');
-bt.addEventListener('click', fetchList);
-
-const btDelete = document.getElementById('btDelete');
-btDelete.addEventListener('click', deleteWine);
-
-const ulListe = document.getElementById('liste');
-const lis = ulListe.querySelectorAll('li');
-for(li of lis) {
-	let idWine = this.dataset.id;
-	
-	li.addEventListener('click', function() {
-		showWine(idWine);
-	});
-}
-
-function showWine(id) {
-	console.log(wines[id]);
-}
-</script>
 </head>
 <body>
 <button id="btList">Fetch</button>
