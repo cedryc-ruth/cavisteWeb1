@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Caviste App JS</title>
+<script>
+function fetchList(){
+	const xhr = new XMLHttpRequest();
+
+	xhr.onload = function(data) {
+		if(this.status === 200) {
+			let data = JSON.parse(this.responseText);
+			console.log(data);
+		}
+	};
+
+	xhr.onerror = function() {
+		if(this.status === 404) {
+			console.log('nope.');
+		}
+	};
+
+	xhr.open('GET', 'http://cruth.phpnet.org/epfc/caviste/api/wines', true);
+	xhr.send(null);
+
+}
+
+let bt = document.getElementById('btList');
+bt.addEventListener('click', fetchList);
+
+const btDelete = document.getElementById('btDelete');
+btDelete.addEventListener('click', deleteWine);
+
+const ulListe = document.getElementById('liste');
+const lis = ulListe.querySelectorAll('li');
+for(li of lis) {
+	let idWine = this.dataset.id;
+	
+	li.addEventListener('click', function() {
+		showWine(idWine);
+	});
+}
+
+function showWine(id) {
+	console.log(wines[id]);
+}
+</script>
+</head>
+<body>
+<button id="btList">Fetch</button>
+<button id="btNew">Fetch</button>
+<button id="btDelete">Fetch</button>
+<button id="btSearch">Fetch</button>
+<ul id="liste">
+	<li data-id="1">Chateau Saint-Cosme</li>
+	<li data-id="7">Bordeau</li>
+</ul>
+</body>
+</html>
